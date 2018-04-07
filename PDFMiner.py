@@ -28,7 +28,7 @@ manager = PDFResourceManager()
 params = LAParams()
 aggregate = PDFPageAggregator(manager, laparams=params)
 interpret = PDFPageInterpreter(manager,aggregate)
-data = []
+data = {}
 empty = {}
 for page in pdfDoc.get_pages():
     interpret.process_page(page)
@@ -44,7 +44,7 @@ for page in pdfDoc.get_pages():
                 txtArray.pop(0)
                 description = "\n".join(txtArray)
                 courseData["description"] = description
-                data.append(courseData)               
+                data[courseData["number"].replace(" ","")] = courseData               
 courseCatalog.close()
 jsonFile = open("courses.json","w")
 json.dump(data,jsonFile)
