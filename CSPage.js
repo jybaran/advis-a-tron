@@ -47,9 +47,40 @@ function initialize() {
     function showMajor() {
         //console.log("got to showhouse");
         // create <section>, <h2>, <p>, and <img> elements
+        let major = document.createElement('h2');
+        let advisors = document.createElement('h3');
+        let course = document.createElement('p');
+        let credits = document.createElement('p');
+
         major.textContent = "Department: " + courses.major;
         advisors.textContent = "Majors: " + courses.advisors;
         course.textContent = "Course: " + courses.course;
         credits.textContent = "Credits Required: " + courses.credits;
+
+        let section = document.createElement('section');
+
     }
+
+
+    // start the process of updating the display with the new set of houses
+    function updateDisplay() {
+        //console.log("got to updatedisplay");
+        // remove the previous contents of the <main> element
+        while (main.firstChild) {
+            main.removeChild(main.firstChild);
+        }
+
+        // if no houses match the search term, display a "No results to display" message
+        if(finalGroup.length == 0) {
+            //console.log("empty finalgroup");
+            let para = document.createElement('p');
+            para.textContent = 'No results to display!';
+            main.appendChild(para);
+            // for each house we want to display, pass its house object to fetchBlob()
+        } else {
+            //console.log("made it to else in updatedisplay");
+            console.log("hi");
+            }
+
+        }
 }
