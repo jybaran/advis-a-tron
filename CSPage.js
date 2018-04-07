@@ -34,6 +34,7 @@ fetch('majors.json').then(function(response){
 
 // Sets up the logic, declares necessary variables, contains functions
 function initialize() {
+    let main = document.querySelector('main');
     //console.log("got to initialize");
     // grab the UI elements that we need to manipulate
     // Set both to equal an empty array, in time for searches to be run
@@ -47,17 +48,20 @@ function initialize() {
     function showMajor() {
         //console.log("got to showhouse");
         // create <section>, <h2>, <p>, and <img> elements
+        let section = document.createElement('section');
         let major = document.createElement('h2');
         let advisors = document.createElement('h3');
         let course = document.createElement('p');
         let credits = document.createElement('p');
 
-        major.textContent = "Department: " + courses.major;
-        advisors.textContent = "Majors: " + courses.advisors;
-        course.textContent = "Course: " + courses.course;
-        credits.textContent = "Credits Required: " + courses.credits;
+        major.textContent = "Department: " + majors.major;
+        advisors.textContent = "Advisors: " + majors.advisors;
+        course.textContent = "Course: " + majors.course;
+        credits.textContent = "Credits Required: " + majors.credits;
 
-        let section = document.createElement('section');
+        main.appendChild(section);
+        section.appendChild(major);
+        section.appendChild(advisors);
 
     }
 

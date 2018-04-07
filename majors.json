@@ -65,7 +65,7 @@
   "AST113" : [ "intro2" ],
   "AST220" : [ "2XX3", "bonus1", "bonus2", "bonus3" ],
   "AST224" : [ "2XX2", "2XX3", "bonus1", "bonus2", "bonus3" ],
-  "AST225" : [ "2XX2" "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST225" : [ "2XX2", "2XX3", "bonus1", "bonus2", "bonus3" ],
   "AST228" : [ "2XX1", "bonus1", "bonus2", "bonus3" ],
   "AST330" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
   "AST335" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
