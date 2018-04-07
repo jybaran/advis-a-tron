@@ -21,48 +21,29 @@ fetch('majors.json').then(function(response){
 function initialize() {
     //console.log("got to initialize");
     // grab the UI elements that we need to manipulate
-    let tempMajorTarget = document.getElementsByName('#major');
-
-    updateDisplay();
-
     // Set both to equal an empty array, in time for searches to be run
     majorGroup = [];
     courseGroup = [];
 
     // when the search button is clicked, invoke goTo() to load
     // the specific page for each major
-    searchBtn.onclick = goTo;
+    submitBtn.onclick = goTo;
 
     function goTo() {
-      let goToTarget = document.getElementById('#major');
-      console.log(goToTarget);
+      let goToTarget = document.querySelector('#major');
+      console.log(goToTarget.value);
+      if (goToTarget.value == "Computer Science") {
+        window.open("CSPage.html");
+      } else if (goToTarget.value == "Math") {
+        window.open("MathPage.html");
       // only go to CS page for now
-      window.open("CSpage.html");
+      //window.open("CSpage.html");
     }
 
-
+}
     // start the process of updating the display
-    function updateDisplay() {
-        //console.log("got to updatedisplay");
-        // remove the previous contents of the <main> element
-        while (main.firstChild) {
-            main.removeChild(main.firstChild);
-        }
 
-        // if nothing to show, display a "No results to display" message
-        if(finalGroup.length == 0) {
-            //console.log("empty finalgroup");
-            let para = document.createElement('p');
-            para.textContent = 'No results to display!';
-            main.appendChild(para);
-            // for each thing in major we want to display, pass its object to fetchBlob()
-        } else {
-            //console.log("made it to else in updatedisplay");
-            for(let i = 0; i < finalGroup.length; i++) {
-                fetchBlob(finalGroup[i]);
-            }
-        }
-    }
+
 
 
     // Display a major inside the <main> element
