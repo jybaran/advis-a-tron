@@ -1,6 +1,6 @@
 // Create variable to store majors database in
-let courses;
-let major;
+let coursesJSON = null;
+let majors = null;
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
 // Once the majors have been successfully loaded and formatted as a JSON object
@@ -8,12 +8,12 @@ let major;
 fetch('courses.json').then(function(response){
                            if(response.ok){
                            response.json().then(function(json){
-                                                courses = json;
+                                                coursesJSON = json;
                                                 initialize();
                                                 });
 
                            } else {
-                           console.log('Network request for houses.json failed with response ' + response.status + ': ' + response.statusText);
+                           console.log('Network request for courses.json failed with response ' + response.status + ': ' + response.statusText);
                            }
                            });
 
@@ -25,7 +25,7 @@ fetch('majors.json').then(function(response){
                                                });
 
                           } else {
-                          console.log('Network request for houses.json failed with response ' + response.status + ': ' + response.statusText);
+                          console.log('Network request for majors.json failed with response ' + response.status + ': ' + response.statusText);
                           }
                           });
 
@@ -34,6 +34,9 @@ fetch('majors.json').then(function(response){
 
 // Sets up the logic, declares necessary variables, contains functions
 function initialize() {
+    if (coursesJSON == null || majors == null) {
+      return
+    }
     let main = document.querySelector('main');
     //console.log("got to initialize");
     // grab the UI elements that we need to manipulate
@@ -50,18 +53,35 @@ function initialize() {
         // create <section>, <h2>, <p>, and <img> elements
         let section = document.createElement('section');
         let major = document.createElement('h2');
-        let advisors = document.createElement('h3');
-        let course = document.createElement('p');
-        let credits = document.createElement('p');
+        let advisorsList = document.createElement('h3');
+        //let courses = document.createElement('p');
 
-        major.textContent = "Department: " + majors.major;
-        advisors.textContent = "Advisors: " + majors.advisors;
-        course.textContent = "Course: " + majors.course;
-        credits.textContent = "Credits Required: " + majors.credits;
+
+        major.textContent = "Department: Computer Science";
+        let advisors = majors["Computer Science"].advisors;
+        advisorsList.textContent = "";
+        for (let advisor of advisors) {
+          advisorsList.textContent = advisorsList.textContent.concat(advisor, ", ");
+        }
+        let courses = majors["Computer Science"].courses;
+
+        section.appendChild(major);
+        section.appendChild(advisorsList);
+      //  section.appendChild(courses);
 
         main.appendChild(section);
-        section.appendChild(major);
-        section.appendChild(advisors);
+        let div = document.createElement("div");
+        div.innerHTML = "";
+        for (let key in courses) {
+          let c = document.createElement("Input");
+          c.setAttribute("type", "checkbox");
+
+          c.value = key;
+          div.innerHTML = div.innerHTML.concat(" ", '<label for=' +key + '><input type = "checkbox" id = ' + key + '>' + key + '</label> </br>')
+        }
+        section.appendChild(div);
+
+
 
     }
 
@@ -84,7 +104,7 @@ function initialize() {
         } else {
             //console.log("made it to else in updatedisplay");
             console.log("hi");
-            for
+
         }
 
     }
