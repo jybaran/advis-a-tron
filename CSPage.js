@@ -78,7 +78,6 @@ function initialize() {
         for (let key in courses) {
           let c = document.createElement("Input");
           c.setAttribute("type", "checkbox");
-
           c.value = key;
           div.innerHTML = div.innerHTML.concat(" ", '<label for=' +key + '><input type = "checkbox" id = ' + key + '>' + key + '</label> </br>')
         }
@@ -86,12 +85,15 @@ function initialize() {
     }
 
     function checkBoxes(e) {
+      let requirements = majors["Computer Science"].requirements;
       e.preventDefault();
       //console.log(div.children);
       for (let i = 0; i<div.children.length;i+=2) {
         let child = div.children[i].children[0];
         if (child.checked) {
           console.log(child.id);
+
+
         }
       }
     }
