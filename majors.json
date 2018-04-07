@@ -49,7 +49,7 @@
  "CSC354" : [ "theory", "prog", "sem", "bonus" ],
  "CSC360" : [ "prog", "sem", "bonus" ],
  "CSC364" : [ "sys", "sem", "bonus" ],
- "CSC390" : [ "theory", "sem", "bonus" ]
+ "CSC390" : [ "theory", "sem", "bonus" ],
  "SDS/CSC235" : [ "theory", "prog", "bonus" ],
  "SDS/CSC293" : [ "theory", "prog", "bonus" ],
  }
