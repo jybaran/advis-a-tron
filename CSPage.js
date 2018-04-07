@@ -97,18 +97,16 @@ function initialize() {
         let subhead = document.createElement('h3');
         let desc = document.createElement('p');
 
-        // Give the <h2> textContent equal to the house "name" property, but with the first character
-        // replaced with the uppercase version of the first character
+        // Give the <h2> textContent equal to the course "name" property
         heading.textContent = course.name;
 
-        // Give the <h3> textContent equal to the house "area" property, but with the first
-        // character replaced with the uppercase version of the first character
+        // Give the <h3> textContent equal to the course "number" property
         subhead.textContent = course.number;
 
-        // Give the <p>s textContent equal to the other house info
+        // Give the <p>s textContent equal to the course description
         desc.textContent = course.description;
 
-        // append the elements to the DOM as appropriate, to add the house to the UI
+        // append the elements to the DOM as appropriate, to add the course to the UI
         main.appendChild(section);
         section.appendChild(heading);
         section.appendChild(subhead);
