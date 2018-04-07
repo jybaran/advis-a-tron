@@ -50,14 +50,31 @@
   "CSC360" : [ "prog", "sem", "bonus" ],
   "CSC364" : [ "sys", "sem", "bonus" ],
   "CSC390" : [ "theory", "sem", "bonus" ],
-  "SDS/CSC235" : [ "theory", "prog", "bonus" ],
-  "SDS/CSC293" : [ "theory", "prog", "bonus" ]
-  }
+  "CSC/SDS235" : [ "theory", "prog", "bonus" ],
+  "CSC/SDS293" : [ "theory", "prog", "bonus" ]
+  },
+  "comments" : "CSC324 may satisfy one of the three distribution areas with appropriate choice of project topics as approved by the instructor. Additionally, it does not fill the seminar requirement."
   },
   {
   "major" : "Astronomy",
   "advisors" : ["Suzan Edwards", "James Lowenthal"],
   "credits" : 44,
-  "courses" : {}
+  "requirements" : ["intro1", "intro2", "2XX1", "2XX2", "2XX3", "3XX", "phy1", "phy2", "bonus1", "bonus2", "bonus3"],
+  "courses" : {
+  "AST111" : [ "intro1" ],
+  "AST113" : [ "intro2" ],
+  "AST220" : [ "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST224" : [ "2XX2", "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST225" : [ "2XX2" "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST228" : [ "2XX1", "bonus1", "bonus2", "bonus3" ],
+  "AST330" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST335" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST337" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST341" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST352" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "PHY117" : [ "phy1" ],
+  "PHY118" : [ "phy2" ]
+  },
+  "comments" : "Students with especially strong background in physics or astronomy may, in consultation with an adviser, replace 111 with a more advanced course. Up to two of the additional three 200/300 level courses may, after consultation with and approval by your adviser, be selected from 200 or 300 level courses in a related discipline such as mathematics, physics, geology, computer science, or the history or philosophy of science."
   }
 ]
