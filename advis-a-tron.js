@@ -2,19 +2,12 @@
 let majors;
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
-// Once the houses have been successfully loaded and formatted as a JSON object
+// Once the majors have been successfully loaded and formatted as a JSON object
 // using response.json(), run the initialize() function
 fetch('majors.json').then(function(response){
                           if(response.ok){
                           response.json().then(function(json){
                                                majors = json;
-                                               majors.sort( function( a, b ) {
-                                                           a = a.name.toLowerCase();
-                                                           b = b.name.toLowerCase();
-
-                                                           return a < b ? -1 : a > b ? 1 : 0;
-                                                           });
-                                               majors.sort();
                                                initialize();
                                                });
 
