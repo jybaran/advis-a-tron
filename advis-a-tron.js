@@ -33,15 +33,13 @@ function initialize() {
     updateDisplay();
 
     // Set both to equal an empty array, in time for searches to be run
-    areaGroup = [];
+    majorGroup = [];
     finalGroup = [];
 
     // when the search button is clicked, invoke selectArea() to start
     // a search running to select the category of houses we want to display
     searchBtn.onclick = selectMajor;
 
-
-    // JENNY: lots of this is bad
     function selectMajor(e) {
         //console.log("got to select area");
         majorTarget = [];
@@ -94,9 +92,9 @@ function initialize() {
     function showMajor(objectURL, house) {
         //console.log("got to showhouse");
         // create <section>, <h2>, <p>, and <img> elements
-
+        major.textContent = "Department: " + major.major;
+        advisors.textContent = "Majors: " + major.advisors;
+        course.textContent = "Course: " + major.course;
         credits.textContent = "Credits Required: " + major.credits;
-        core.textContent = "Core Classes: " + major.core;
-
     }
 }
