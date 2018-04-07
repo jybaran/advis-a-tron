@@ -58,6 +58,21 @@
   "major" : "Astronomy",
   "advisors" : ["Suzan Edwards", "James Lowenthal"],
   "credits" : 44,
-  "courses" : {}
+  "requirements" : ["intro1", "intro2", "2XX1", "2XX2", "2XX3", "3XX", "phy1", "phy2", "bonus1", "bonus2", "bonus3"],
+  "courses" : {
+  "AST111" : [ "intro1" ],
+  "AST113" : [ "intro2" ],
+  "AST220" : [ "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST224" : [ "2XX2", "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST225" : [ "2XX2" "2XX3", "bonus1", "bonus2", "bonus3" ],
+  "AST228" : [ "2XX1", "bonus1", "bonus2", "bonus3" ],
+  "AST330" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST335" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST337" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST341" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "AST352" : [ "3XX", "bonus1", "bonus2", "bonus3" ],
+  "PHY117" : [ "phy1" ],
+  "PHY118" : [ "phy2" ]
+  }
   }
 ]
