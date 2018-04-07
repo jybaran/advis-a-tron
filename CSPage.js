@@ -1,6 +1,7 @@
 // Create variable to store majors database in
 let coursesJSON = null;
 let majors = null;
+let div = document.createElement("div");
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
 // Once the majors have been successfully loaded and formatted as a JSON object
@@ -46,9 +47,11 @@ function initialize() {
     // when the search button is clicked, invoke goTo() to load
     // the specific page for each major
     showMajor();
+    Submit.onclick = checkBoxes;
 
     // Display a major inside the <main> element
     function showMajor() {
+
         //console.log("got to showhouse");
         // create <section>, <h2>, <p>, and <img> elements
         let section = document.createElement('section');
@@ -70,19 +73,29 @@ function initialize() {
       //  section.appendChild(courses);
 
         main.appendChild(section);
-        let div = document.createElement("div");
+
         div.innerHTML = "";
         for (let key in courses) {
           let c = document.createElement("Input");
           c.setAttribute("type", "checkbox");
-
           c.value = key;
           div.innerHTML = div.innerHTML.concat(" ", '<label for=' +key + '><input type = "checkbox" id = ' + key + '>' + key + '</label> </br>')
         }
         section.appendChild(div);
+    }
+
+    function checkBoxes(e) {
+      let requirements = majors["Computer Science"].requirements;
+      e.preventDefault();
+      //console.log(div.children);
+      for (let i = 0; i<div.children.length;i+=2) {
+        let child = div.children[i].children[0];
+        if (child.checked) {
+          console.log(child.id);
 
 
-
+        }
+      }
     }
 
 
