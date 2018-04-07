@@ -1,0 +1,97 @@
+ [
+  {
+  "major" : "Computer Science",
+  "advisors" : ["Judy Cardell", "Nicholas Howe", "Joseph O'Rourke", "Ileana Streinu", "Dominique Thiebaut"],
+  "credits" : 46,
+  "courses" : [
+               [
+                "CSC102",
+                "CSC103",
+                "CSC105",
+                "CSC106",
+                "CSC107",
+                "CSC/SDS109",
+                "CSC/SDS192",
+                "FYS164",
+                "CSC2XX",
+                "MTH2XX",
+                "CSC3XX",
+                "MTH3XX",
+                "CSC4XX",
+                "MTH4XX"
+                ],
+               "CSC111",
+               "CSC212",
+               "CSC250",
+               [
+                "MTH111",
+                "MTH112",
+                "MTH212",
+                "MTH220",
+                "LOG100"
+                ],
+               [
+                "MTH153",
+                "MTH233",
+                "MTH238",
+                "MTH246",
+                "MTH254",
+                "MTH255",
+                "MTH280",
+                "MTH281",
+                "MTH353"
+                ],
+               [
+                "CSC205",
+                "CSC240",
+                "CSC252",
+                "CSC274",
+                "CSC290",
+                "CSC293",
+                "CSC334",
+                "CSC354",
+                "CSC390",
+                "CSC/SDS235",
+                "CSC/SDS293"
+                ],
+               [
+                "CSC205",
+                "CSC220",
+                "CSC240",
+                "CSC260",
+                "CSC262",
+                "CSC274",
+                "CSC290",
+                "CSC293",
+                "CSC334",
+                "CSC352",
+                "CSC353",
+                "CSC354",
+                "CSC360",
+                "CSC/SDS235",
+                "CSC/SDS293"
+                ],
+               [
+                "CSC249",
+                "CSC262",
+                "CSC270",
+                "EGR321",
+                "CSC352",
+                "CSC364"
+                ],
+               [
+                "CSC334",
+                "CSC352",
+                "CSC360",
+                "CSC370",
+                "CSC390",
+                ]
+               ]
+  },
+  {
+  "major" : "Astronomy",
+  "advisors" : ["Suzan Edwards", "James Lowenthal"],
+  "credits" : 44,
+  "courses" : []
+  }
+]
