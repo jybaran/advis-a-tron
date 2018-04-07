@@ -1,4 +1,4 @@
-// Create variable to store houses database in
+// Create variable to store majors database in
 let majors;
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
@@ -34,38 +34,21 @@ function initialize() {
 
     // Set both to equal an empty array, in time for searches to be run
     majorGroup = [];
-    finalGroup = [];
+    courseGroup = [];
 
-    // when the search button is clicked, invoke selectArea() to start
-    // a search running to select the category of houses we want to display
-    searchBtn.onclick = selectMajor;
+    // when the search button is clicked, invoke goTo() to load
+    // the specific page for each major
+    searchBtn.onclick = goTo;
 
-    function selectMajor(e) {
-        //console.log("got to select area");
-        majorTarget = [];
-        for (let i = 0; i < tempMajorTarget.length; i++) {
-            if (tempMajorTarget[i].checked) {
-                areaTarget.push(tempMajorTarget[i].value);
-            }
-        }
-        //console.log(areaTarget);
-        // Use preventDefault() to stop the form submitting — that would ruin
-        // the experience
-        e.preventDefault();
-    }
-
-    // selectHouses() Takes the group of houses selected by selectArea(), and further
-    // filters them by the other limits (if any have been entered)
-    function selectMajor() {
-        console.log("got to selectmajor");
-        // If no further limits have been entered, just make the finalGroup array equal to the areaGroup
-        // array — we don't want to filter the houses further — then run updateDisplay().
-
-
+    function goTo() {
+      let goToTarget = document.getElementById('#major');
+      console.log(goToTarget);
+      // only go to CS page for now
+      window.open("CSpage.html");
     }
 
 
-    // start the process of updating the display with the new set of houses
+    // start the process of updating the display
     function updateDisplay() {
         //console.log("got to updatedisplay");
         // remove the previous contents of the <main> element
@@ -73,13 +56,13 @@ function initialize() {
             main.removeChild(main.firstChild);
         }
 
-        // if no houses match the search term, display a "No results to display" message
+        // if nothing to show, display a "No results to display" message
         if(finalGroup.length == 0) {
             //console.log("empty finalgroup");
             let para = document.createElement('p');
             para.textContent = 'No results to display!';
             main.appendChild(para);
-            // for each house we want to display, pass its house object to fetchBlob()
+            // for each thing in major we want to display, pass its object to fetchBlob()
         } else {
             //console.log("made it to else in updatedisplay");
             for(let i = 0; i < finalGroup.length; i++) {
@@ -88,7 +71,8 @@ function initialize() {
         }
     }
 
-    // Display a house inside the <main> element
+
+    // Display a major inside the <main> element
     function showMajor(objectURL, house) {
         //console.log("got to showhouse");
         // create <section>, <h2>, <p>, and <img> elements
