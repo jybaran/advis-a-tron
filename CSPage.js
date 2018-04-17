@@ -1,6 +1,9 @@
 // Create variable to store majors database in
 let coursesJSON = null;
 let majors = null;
+let courses = null;
+let requirements = null;
+let reqsDone = null;
 let div = document.createElement("div");
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
@@ -66,7 +69,7 @@ function initialize() {
         for (let advisor of advisors) {
           advisorsList.textContent = advisorsList.textContent.concat(advisor, ", ");
         }
-        let courses = majors["Computer Science"].courses;
+        courses = majors["Computer Science"].courses;
 
         section.appendChild(major);
         section.appendChild(advisorsList);
@@ -85,19 +88,28 @@ function initialize() {
     }
 
     function checkBoxes(e) {
-      let requirements = majors["Computer Science"].requirements;
       e.preventDefault();
-      //console.log(div.children);
+      requirements = majors["Computer Science"].requirements;
+      reqsDone = [];
+      let reqKeys = Object.keys(requirements);
+      console.log(reqKeys);
+      // still need to remove checked courses from requirements designations
       for (let i = 0; i<div.children.length;i+=2) {
         let child = div.children[i].children[0];
         if (child.checked) {
-          console.log(child.id);
-
-
+          // adds what req checked course applies to to list of major progress
+          reqsDone.push(courses[child.id]);
         }
       }
+      console.log(reqsDone);
     }
-
+    function sortRequirements() {
+      // this method sorts the list of taken reqs
+      // and 'ticks off' the appropriate major requirements
+      // to ultimately produce a list of possible courses that could be taken
+      // to finish the major.
+      let temp;
+    }
 
     // start the process of updating the display with the new set of houses
     function updateDisplay() {
