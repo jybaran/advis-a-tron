@@ -144,5 +144,45 @@
             "MTH382" : [ "depth", "bonus" ]
         },
         "comments" : "Some of the foundational requirements might be waived for a well-prepared student. In total, majors must take at least 36 credits among courses numbered at or above 153, with the following exceptions. With the approval of the department, up to 8 of the credits may be satisfied by courses taken outside the mathematics and statistics department. Courses taken outside the department must contain either substantial mathematical content at a level more advanced than MTH211 and 212 or statistical content at a level more advanced than MTH220. Generally, such a 4-credit course will be given 2 credits toward the mathematics major. Note that courses that are cross-listed with mathematics and another department are counted as mathematics courses and given full credit toward the mathematics major."
+    },
+    "Mathematics Stats" : {
+        "advisors" : ["Pau Atela", "Benjamin Baumer", "Jennifer Beichman", "Patricia Cahn", "Christophe Golé", "Katherine Halvorsen", "James Henle", "Rajan Mehta", "Joseph O'Rourke", "Daniel Schultheis", "Gwen Spencer", "Ileana Streinu", "Nessy Tania", "Julianna Tymoczko"],
+        "credits" : 40,
+        "requirements" : {
+            "found1" : "Foundation: Calculus 1",
+            "found2" : "Foundation: Calculus 2",
+            "found3" : "Foundation: Discrete Math",
+            "found4" : "Foundation: Linear Algebra",
+            "found5" : "Foundation: Calculus 3",
+            "stats1" : "Stats: Probability & Statistics",
+            "stats2" : "Stats: Probability",
+            "stats3" : "Stats: Mathematical Statistics",
+            "stats4" : "Stats: Research Design & Analysis or Multiple Regression",
+            "analysis" : "Core: Analysis",
+            "depth" : "Depth: Advanced MTH course at Smith (310-390)"
+        },
+        "courses" : {
+            "MTH111" : [ "found1" ],
+            "MTH112" : [ "found2" ],
+            "MTH153" : [ "found3" ],
+            "MTH211" : [ "found4" ],
+            "MTH212" : [ "found5" ],
+            "MTH220" : [ "stats1" ],
+            "MTH233" : [ "algebra" ],
+            "MTH238" : [ "algebra" ],
+            "MTH246" : [ "stats2" ],
+            "MTH280" : [ "analysis" ],
+            "MTH281" : [ "analysis" ],
+            "MTH290" : [ "stats4" ],
+            "MTH291" : [ "stats4" ],
+            "MTH320" : [ "stats3" ],
+            "MTH333" : [ "depth" ],
+            "MTH353" : [ "depth" ],
+            "MTH364" : [ "depth" ],
+            "MTH370" : [ "depth" ],
+            "MTH381" : [ "depth" ],
+            "MTH382" : [ "depth" ]
+        },
+        "comments" : "Some of the foundational requirements might be waived for a well-prepared student. In total, majors must take at least 36 credits among courses numbered at or above 153, with the following exceptions. With the approval of the department, up to 8 of the credits may be satisfied by courses taken outside the mathematics and statistics department. Courses taken outside the department must contain either substantial mathematical content at a level more advanced than MTH211 and 212 or statistical content at a level more advanced than MTH220. Generally, such a 4-credit course will be given 2 credits toward the mathematics major. Note that courses that are cross-listed with mathematics and another department are counted as mathematics courses and given full credit toward the mathematics major."
     }
 }
