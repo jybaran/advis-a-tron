@@ -184,5 +184,58 @@
             "MTH382" : [ "depth" ]
         },
         "comments" : "Some of the foundational requirements might be waived for a well-prepared student. In total, majors must take at least 36 credits among courses numbered at or above 153, with the following exceptions. With the approval of the department, up to 8 of the credits may be satisfied by courses taken outside the mathematics and statistics department. Courses taken outside the department must contain either substantial mathematical content at a level more advanced than MTH211 and 212 or statistical content at a level more advanced than MTH220. Generally, such a 4-credit course will be given 2 credits toward the mathematics major. Note that courses that are cross-listed with mathematics and another department are counted as mathematics courses and given full credit toward the mathematics major."
+    },
+    "Engineering BA" : {
+        "advisors" : ["Judith Cardell", "Kristen Dorsey", "Glenn Ellis", "Andrew Guswa", "Susannah Howe", "Niveen Ismail", "Denise McKahn", "Borjana Mikic", "Sarah Moore", "Paramjeet Pati", "Paul Voss", "Susan Voss"],
+        "credits" : 52,
+        "requirements" : {
+            "intro1" : "Intro: Engineering for Everyone",
+            "intro2" : "Intro: Fundamental Engineering Principles",
+            "core1" : "Core: Circuit Theory",
+            "core2" : "Core: Mechanics",
+            "core3" : "Core: Thermodynamics",
+            "depth1" : "Depth: 300-level (or higher) EGR course 1",
+            "depth2" : "Depth: 300-level (or higher) EGR course 2",
+            "math1" : "Calculus I",
+            "math2" : "Calculus II",
+            "math3" : "Calculus III",
+            "physics1" : "Mathematical Methods of Physical Sciences and Engineering",
+            "physics2" : "Intro Physics",
+            "chem" : "General Chemistry"
+        },
+        "courses" : {
+            "EGR100" : [ "intro1" ],
+            "EGR110" : [ "intro2" ],
+            "EGR220" : [ "core1" ],
+            "EGR270" : [ "core2" ],
+            "EGR290" : [ "core3" ],
+            "EGR312" : [ "depth1", "depth2" ],
+            "EGR314" : [ "depth1", "depth2" ],
+            "EGR315" : [ "depth1", "depth2" ],
+            "EGR320" : [ "depth1", "depth2" ],
+            "EGR322" : [ "depth1", "depth2" ],
+            "EGR323" : [ "depth1", "depth2" ],
+            "EGR325" : [ "depth1", "depth2" ],
+            "EGR326" : [ "depth1", "depth2" ],
+            "EGR340" : [ "depth1", "depth2" ],
+            "EGR346" : [ "depth1", "depth2" ],
+            "EGR350" : [ "depth1", "depth2" ],
+            "EGR351" : [ "depth1", "depth2" ],
+            "EGR360" : [ "depth1", "depth2" ],
+            "EGR363" : [ "depth1", "depth2" ],
+            "EGR374" : [ "depth1", "depth2" ],
+            "EGR377" : [ "depth1", "depth2" ],
+            "EGR388" : [ "depth1", "depth2" ],
+            "EGR389" : [ "depth1", "depth2" ],
+            "EGR390" : [ "depth1", "depth2" ],
+            "EGR312" : [ "depth1", "depth2" ],
+            "MTH111" : [ "math1" ],
+            "MTH112" : [ "math2" ],
+            "MTH212" : [ "math3" ],
+            "PHY117" : [ "physics2" ],
+            "PHY210" : [ "physics1" ],
+            "CHM111" : [ "chem" ]
+        },
+        "comments" : "Course substitutions require approval of the student's adviser and assistant director or director of the engineering department. As with all BA degrees at Smith, the Engineering Arts degree requires 64 credits outside of the major."
     }
 }
