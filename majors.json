@@ -2,7 +2,8 @@
     "Computer Science" : {
         "advisors" : ["Judy Cardell", "Nicholas Howe", "Joseph O'Rourke", "Ileana Streinu", "Dominique Thiebaut"],
         "credits" : 44,
-        "requirements" : {
+        "reqlist" : [ "bonus", "intro", "core1", "core2", "core3", "math1", "math2", "theory", "prog", "sys", "sem" ],
+        "reqdict" : {
             "bonus": "4 credits of pre-intro or a MTH or CSC course of level 200 or above.",
             "intro" : "Intro to CS",
             "core1" : "Data Structures",
@@ -69,7 +70,8 @@
     "Astronomy" : {
         "advisors" : ["Suzan Edwards", "James Lowenthal"],
         "credits" : 44,
-        "requirements" : {
+        "reqlist" : [ "intro1", "intro2", "2XX1", "2XX2", "2XX3", "3XX", "phy1", "phy2", "bonus1", "bonus2", "bonus3" ],
+        "reqdict" : {
             "intro1" : "Intro to Astronomy",
             "intro2" : "Telescopes & Techniques",
             "2XX1" : "Astrophysics 1",
@@ -103,7 +105,8 @@
     "Mathematics" : {
         "advisors" : ["Pau Atela", "Benjamin Baumer", "Jennifer Beichman", "Patricia Cahn", "Christophe Golé", "Katherine Halvorsen", "James Henle", "Rajan Mehta", "Joseph O'Rourke", "Daniel Schultheis", "Gwen Spencer", "Ileana Streinu", "Nessy Tania", "Julianna Tymoczko"],
         "credits" : 40,
-        "requirements" : {
+        "reqlist" : [ "found1", "found2", "found3", "found4", "found5", "algebra", "analysis", "depth", "bonus1", "bonus2", "bonus3" ],
+        "reqdict" : {
             "found1" : "Foundation: Calculus 1",
             "found2" : "Foundation: Calculus 2",
             "found3" : "Foundation: Discrete Math",
@@ -148,7 +151,8 @@
     "Mathematics Stats" : {
         "advisors" : ["Pau Atela", "Benjamin Baumer", "Jennifer Beichman", "Patricia Cahn", "Christophe Golé", "Katherine Halvorsen", "James Henle", "Rajan Mehta", "Joseph O'Rourke", "Daniel Schultheis", "Gwen Spencer", "Ileana Streinu", "Nessy Tania", "Julianna Tymoczko"],
         "credits" : 40,
-        "requirements" : {
+        "reqlist" : [ "found1", "found2", "found3", "found4", "found5", "stats1", "stats2", "stats3", "stats4", "analysis", "depth" ],
+        "reqdict" : {
             "found1" : "Foundation: Calculus 1",
             "found2" : "Foundation: Calculus 2",
             "found3" : "Foundation: Discrete Math",
@@ -188,7 +192,62 @@
     "Engineering BA" : {
         "advisors" : ["Judith Cardell", "Kristen Dorsey", "Glenn Ellis", "Andrew Guswa", "Susannah Howe", "Niveen Ismail", "Denise McKahn", "Borjana Mikic", "Sarah Moore", "Paramjeet Pati", "Paul Voss", "Susan Voss"],
         "credits" : 52,
-        "requirements" : {
+        "reqlist" : [ "intro1", "intro2", "core1", "core2", "core3", "depth1", "depth2", "math1", "math2", "math3", "physics1", "physics2", "chem" ],
+        "reqdict" : {
+            "intro1" : "Intro: Engineering for Everyone",
+            "intro2" : "Intro: Fundamental Engineering Principles",
+            "core1" : "Core: Circuit Theory",
+            "core2" : "Core: Mechanics",
+            "core3" : "Core: Thermodynamics",
+            "depth1" : "Depth: 300-level (or higher) EGR course 1",
+            "depth2" : "Depth: 300-level (or higher) EGR course 2",
+            "math1" : "Calculus I",
+            "math2" : "Calculus II",
+            "math3" : "Calculus III",
+            "physics1" : "Mathematical Methods of Physical Sciences and Engineering",
+            "physics2" : "Intro Physics",
+            "chem" : "General Chemistry"
+        },
+        "courses" : {
+            "EGR100" : [ "intro1" ],
+            "EGR110" : [ "intro2" ],
+            "EGR220" : [ "core1" ],
+            "EGR270" : [ "core2" ],
+            "EGR290" : [ "core3" ],
+            "EGR312" : [ "depth1", "depth2" ],
+            "EGR314" : [ "depth1", "depth2" ],
+            "EGR315" : [ "depth1", "depth2" ],
+            "EGR320" : [ "depth1", "depth2" ],
+            "EGR322" : [ "depth1", "depth2" ],
+            "EGR323" : [ "depth1", "depth2" ],
+            "EGR325" : [ "depth1", "depth2" ],
+            "EGR326" : [ "depth1", "depth2" ],
+            "EGR340" : [ "depth1", "depth2" ],
+            "EGR346" : [ "depth1", "depth2" ],
+            "EGR350" : [ "depth1", "depth2" ],
+            "EGR351" : [ "depth1", "depth2" ],
+            "EGR360" : [ "depth1", "depth2" ],
+            "EGR363" : [ "depth1", "depth2" ],
+            "EGR374" : [ "depth1", "depth2" ],
+            "EGR377" : [ "depth1", "depth2" ],
+            "EGR388" : [ "depth1", "depth2" ],
+            "EGR389" : [ "depth1", "depth2" ],
+            "EGR390" : [ "depth1", "depth2" ],
+            "EGR312" : [ "depth1", "depth2" ],
+            "MTH111" : [ "math1" ],
+            "MTH112" : [ "math2" ],
+            "MTH212" : [ "math3" ],
+            "PHY117" : [ "physics2" ],
+            "PHY210" : [ "physics1" ],
+            "CHM111" : [ "chem" ]
+        },
+        "comments" : "Course substitutions require approval of the student's adviser and assistant director or director of the engineering department. As with all BA degrees at Smith, the Engineering Arts degree requires 64 credits outside of the major."
+    },
+    "Engineering BS" : {
+        "advisors" : ["Judith Cardell", "Kristen Dorsey", "Glenn Ellis", "Andrew Guswa", "Susannah Howe", "Niveen Ismail", "Denise McKahn", "Borjana Mikic", "Sarah Moore", "Paramjeet Pati", "Paul Voss", "Susan Voss"],
+        "credits" : 89,
+        "reqlist" : [ "intro1", "intro2", "core1", "core2", "core3", "core4", "capstone", "prof", "depth1", "depth2", "depth3", "depth4", "depth5", "math1", "math2", "math3", "math4", "physics1", "physics2", "chem", "lab", "cs" ],
+        "reqdict" : {
             "intro1" : "Intro: Engineering for Everyone",
             "intro2" : "Intro: Fundamental Engineering Principles",
             "core1" : "Core: Circuit Theory",
