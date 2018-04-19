@@ -90,25 +90,25 @@ function initialize() {
     function checkBoxes(e) {
       e.preventDefault();
       requirements = majors["Computer Science"].requirements;
-      reqsDone = [];
+      reqsDone = {};
       let reqKeys = Object.keys(requirements);
-      console.log(reqKeys);
+      //console.log(reqKeys);
       // still need to remove checked courses from requirements designations
       for (let i = 0; i<div.children.length;i+=2) {
         let child = div.children[i].children[0];
         if (child.checked) {
+          key = courses[child.id].length;
           // adds what req checked course applies to to list of major progress
-          reqsDone.push(courses[child.id]);
+          if (key in reqsDone) {
+            reqsDone[key].push(courses[child.id]);
+          }
+          else {
+            reqsDone[key] = [courses[child.id]];
+          }
         }
       }
-      console.log(reqsDone);
-    }
-    function sortRequirements() {
-      // this method sorts the list of taken reqs
-      // and 'ticks off' the appropriate major requirements
-      // to ultimately produce a list of possible courses that could be taken
-      // to finish the major.
-      let temp;
+      console.log(Object.keys(reqsDone));
+      
     }
 
     // start the process of updating the display with the new set of houses
@@ -119,18 +119,6 @@ function initialize() {
             main.removeChild(main.firstChild);
         }
 
-        // if no houses match the search term, display a "No results to display" message
-        if(finalGroup.length == 0) {
-            //console.log("empty finalgroup");
-            let para = document.createElement('p');
-            para.textContent = 'No results to display!';
-            main.appendChild(para);
-            // for each house we want to display, pass its house object to fetchBlob()
-        } else {
-            //console.log("made it to else in updatedisplay");
-            console.log("hi");
-
-        }
 
     }
 
