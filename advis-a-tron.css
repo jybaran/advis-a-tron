@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Overlock+SC');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Karla');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
 
 /* Header title style with background image of Smith */
 header {
@@ -15,7 +16,7 @@ header {
     height: 250px;
     width: 1100px;
     padding: 20px;
-    background-image: url("images/smithcollege.jpg");
+    background-image: url("smithcollege.jpg");
 }
 
 /* Wrap the body so there is whitespace on either side */
@@ -36,6 +37,11 @@ h1 {
 	font-size: 500%;
     z-index: 10;
     text-align: center;
+}
+
+h2 {
+    padding-top: 25px;
+    font-family: 'Raleway', serif;
 }
 
 /* Style the checkbox heading */
