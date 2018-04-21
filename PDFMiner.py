@@ -41,6 +41,7 @@ for page in pdfDoc.get_pages():
                 txtArray = txtToCheck.split("\n")
                 courseData["number"] = txtArray[0][0:7]
                 courseData["name"] = txtArray[0][7:]
+                courseData["offered"] = txtArray[len(txtArray)-2]
                 txtArray.pop(0)
                 description = "\n".join(txtArray)
                 courseData["description"] = description
