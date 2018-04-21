@@ -18,6 +18,7 @@ import copy
 
 #resource https://docs.python.org/3/howto/regex.html
 courseFilter = re.compile('[A-Z][A-Z][A-Z] [0-9][0-9][0-9]')
+latinHonorsRegex = re.compile('{[A-Z]}')
 courseCatalog = open('SmithCatalogue2017-18.pdf',"rb")
 parser = PDFParser(courseCatalog)
 pdfDoc = PDFDocument()
@@ -36,6 +37,8 @@ for page in pdfDoc.get_pages():
     for el in pgLayout:
         if isinstance(el,LTTextBoxHorizontal):
             txtToCheck = el.get_text()
+            latinHonorsTxt = ""
+            ltnHonorsExists = True
             if (courseFilter.match(txtToCheck[0:7])):
                 courseData = copy.copy(empty)
                 txtArray = txtToCheck.split("\n")
@@ -45,7 +48,15 @@ for page in pdfDoc.get_pages():
                 txtArray.pop(0)
                 description = "\n".join(txtArray)
                 courseData["description"] = description
-                data[courseData["number"].replace(" ","")] = courseData               
+                data[courseData["number"].replace(" ","")] = courseData
+                while (ltnHonorsExists):
+                    ltnHnrs = latinHonorsRegex.search(description)
+                    if (ltnHnrs==None):
+                        ltnHonorsExists = False
+                    else:
+                        latinHonorsTxt = latinHonorsTxt + ltnHnrs[0]
+                        description = description.replace(ltnHnrs[0],"")
+                courseData["latin honors"] = latinHonorsTxt
 courseCatalog.close()
 jsonFile = open("courses.json","w")
 json.dump(data,jsonFile)
