@@ -89,36 +89,97 @@ function initialize() {
 
     function checkBoxes(e) {
       e.preventDefault();
-      requirements = majors["Computer Science"].requirements;
+      requirements = majors["Computer Science"].reqList;
       reqsDone = {};
-      let reqKeys = Object.keys(requirements);
-      //console.log(reqKeys);
-      // still need to remove checked courses from requirements designations
       for (let i = 0; i<div.children.length;i+=2) {
         let child = div.children[i].children[0];
         if (child.checked) {
-          key = courses[child.id].length;
-          // adds what req checked course applies to to list of major progress
-          if (key in reqsDone) {
-            reqsDone[key].push(courses[child.id]);
-          }
-          else {
-            reqsDone[key] = [courses[child.id]];
+          reqsDone[child.id] = courses[child.id];
+          //console.log(reqsDone);
+        }
+      }
+      return reqsDone;
+    }
+
+    function displayHelper(reqsDone) {
+      sumReqs = null;
+      for key in reqsDone {
+        if (sumReqs == null) {
+          sumReqs = reqsDone[key];
+        } else {
+          temp = reqsDone[key];
+          for (let i = 0; i < sumReqs.length; i++) {
+            sumReqs[i] = sumReqs[i] + temp[i];
           }
         }
       }
-      console.log(Object.keys(reqsDone));
-      
+      return sumReqs;
     }
 
-    // start the process of updating the display with the new set of houses
-    function updateDisplay() {
-        //console.log("got to updatedisplay");
-        // remove the previous contents of the <main> element
-        while (main.firstChild) {
-            main.removeChild(main.firstChild);
+    function findMax(array) {
+      max = null;
+      for (let i = 0; i<array.length; i++) {
+        if (max == null) {
+          max = array[i];
+        } else {
+          if (array[i] > max) {
+            max = array[i];
+          }
         }
+      }
+      return max;
+    }
 
+    function findMin(array) {
+      min = null;
+      index = null;
+      for (let i = 0; i<array.length; i++) {
+        if (min == null) {
+          min = array[i];
+          index = i;
+        } else {
+          if (array[i] < min) {
+            min = array[i];
+            index = i;
+          }
+        }
+      }
+      return [min, index];
+    }
+    function processReqs(reqsDone, sumReqs) {
+      preqs = true;
+      filled = {};
+      while  preqs {
+        minItem = findMin(sumReqs);
+        minIndex = minItem[1];
+        minItem = minItem[0];
+        for item in reqsDone {
+          req = reqsDone[item];
+          if (req[minIndex] != 0) {
+            // if we're here, using current course to fill a req
+            filled[item] = requirements[minIndex];
+            for (let i = 0; i<sumReqs.length;i++) {
+              sumReqs[i] = sumReqs[i]-req[i];
+            }
+            sumReqs[minIndex] = 0;
+            break;
+          }
+        }
+        max = findMax(sumReqs);
+        if (max == 0) {
+          preqs = false;
+        }
+      }
+      return filled;
+    }
+
+    function updateDisplay() {
+      while (main.firstChild) {
+          main.removeChild(main.firstChild);
+      }
+      // LEFT TO DO:
+      // compare filled requirements to as of yet unsatisfied requirements
+      // take unsatisfied reqs and display corresponding courses on page
 
     }
 
