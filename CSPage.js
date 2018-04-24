@@ -91,6 +91,7 @@ function initialize() {
           reqsDone[child.id] = courses[child.id];
         }
       }
+      updateDisplay();
     }
 
     //this function puts the dictionary of taken courses
