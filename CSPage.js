@@ -180,6 +180,7 @@ function initialize() {
       // take unsatisfied reqs and display corresponding courses on page
 
     }
+
     // this displays all information for a given course
     // USED FOR TESTING PURPOSES AND DEBUGGING
     function showReq(major) {
