@@ -60,10 +60,10 @@
             "MTH280" : [ 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 ],
             "MTH281" : [ 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 ],
             "MTH353" : [ 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 ],
-            "CSC/SDS109" : [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-            "CSC/SDS192" : [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-            "CSC/SDS235" : [ 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 ],
-            "CSC/SDS293" : [ 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 ]
+            "SDS109" : [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            "SDS192" : [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            "SDS235" : [ 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 ],
+            "SDS293" : [ 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 ]
         },
         "comments" : "CSC324 may satisfy one of the three distribution areas with appropriate choice of project topics as approved by the instructor. Additionally, it does not fill the seminar requirement."
     },
