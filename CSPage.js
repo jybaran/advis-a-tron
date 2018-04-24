@@ -1,4 +1,4 @@
-// Create variable to store majors database in
+// global variables
 let coursesJSON = null;
 let majors = null;
 let courses = null;
@@ -36,33 +36,29 @@ fetch('majors.json').then(function(response){
 
 
 
-// Sets up the logic, declares necessary variables, contains functions
+// declares necessary variables, contains functions
 function initialize() {
+  // ensuring the data sets are non empty
     if (coursesJSON == null || majors == null) {
       return
     }
     let main = document.querySelector('main');
-    //console.log("got to initialize");
     // grab the UI elements that we need to manipulate
-    // Set both to equal an empty array
+    // Set requirements equal to an empty array
     majorReqs = [];
-
-    // when the search button is clicked, invoke goTo() to load
-    // the specific page for each major
+    // when the search button is clicked load specific page for each major
     showMajor();
     Submit.onclick = checkBoxes;
 
     // Display a major inside the <main> element
     function showMajor() {
-
-        //console.log("got to showhouse");
         // create <section>, <h2>, <p>, and <img> elements
         let section = document.createElement('section');
         let major = document.createElement('h2');
         let advisorsList = document.createElement('h3');
-        //let courses = document.createElement('p');
 
-
+        // setting up which major the user chose and initializing all the variables
+        // to be used later (mostly for HTML purposes)
         major.textContent = "Department: Computer Science";
         let advisors = majors["Computer Science"].advisors;
         advisorsList.textContent = "";
@@ -73,8 +69,6 @@ function initialize() {
 
         section.appendChild(major);
         section.appendChild(advisorsList);
-      //  section.appendChild(courses);
-
         main.appendChild(section);
 
         div.innerHTML = "";
@@ -86,7 +80,7 @@ function initialize() {
         }
         section.appendChild(div);
     }
-
+    // this function processes which courses have been selected by the user
     function checkBoxes(e) {
       e.preventDefault();
       requirements = majors["Computer Science"].reqList;
@@ -95,12 +89,13 @@ function initialize() {
         let child = div.children[i].children[0];
         if (child.checked) {
           reqsDone[child.id] = courses[child.id];
-          //console.log(reqsDone);
         }
       }
       return reqsDone;
     }
 
+    //this function puts the dictionary of taken courses
+    // into a more palatable format
     function displayHelper(reqsDone) {
       sumReqs = null;
       for key in reqsDone {
@@ -115,7 +110,7 @@ function initialize() {
       }
       return sumReqs;
     }
-
+    // simple find-max-element-of-array function
     function findMax(array) {
       max = null;
       for (let i = 0; i<array.length; i++) {
@@ -129,7 +124,7 @@ function initialize() {
       }
       return max;
     }
-
+    // simple find-min-element-of-array function
     function findMin(array) {
       min = null;
       index = null;
@@ -146,6 +141,8 @@ function initialize() {
       }
       return [min, index];
     }
+    // this function checks to see which courses the user has taken and marks
+    // their corresponding requirement 'slot' as satisfied
     function processReqs(reqsDone, sumReqs) {
       preqs = true;
       filled = {};
@@ -173,6 +170,7 @@ function initialize() {
       return filled;
     }
 
+    // this function displays all of the information in the HTML element of the page
     function updateDisplay() {
       while (main.firstChild) {
           main.removeChild(main.firstChild);
@@ -182,7 +180,8 @@ function initialize() {
       // take unsatisfied reqs and display corresponding courses on page
 
     }
-
+    // this displays all information for a given course
+    // USED FOR TESTING PURPOSES AND DEBUGGING
     function showReq(major) {
         //console.log("got to showreq");
         // create <section>, <h2>, <p>, and <img> elements
