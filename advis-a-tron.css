@@ -77,9 +77,21 @@ button {
     padding: 8px 32px;
 }
 
-/* Submit button turns a darker colour when clicked */
+/* Submit button turns a different colour when hovered over*/
+button:hover {
+    background-color: #384f75;
+    color: white;
+}
+
+/* Visual effect for submit button when clicked */
 button:active {
     background-color: #384f75;
+    padding: 10px 35px;
+}
+
+tr {
+    height: 500px;
+    overflow-y: scroll;
 }
 
 /* Style the buttons that are used to open and close the accordion panel containing courses filling a requirement */
