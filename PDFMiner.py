@@ -4,7 +4,7 @@ Created on Sat Apr  7 12:37:27 2018
 
 @author: Lauren
 """
-#resource https://stackoverflow.com/questions/44024697/how-to-read-pdf-file-using-pdfminer3k
+# resource https://stackoverflow.com/questions/44024697/how-to-read-pdf-file-using-pdfminer3k
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfparser import PDFDocument
 from pdfminer.converter import PDFPageAggregator
@@ -13,32 +13,40 @@ from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.layout import LTTextBoxHorizontal
 import re
-import json      #reference https://docs.python.org/2/library/json.html
+import json      # reference https://docs.python.org/2/library/json.html
 import copy
 
-#resource https://docs.python.org/3/howto/regex.html
-courseFilter = re.compile('[A-Z][A-Z][A-Z] [0-9][0-9][0-9]')
-latinHonorsRegex = re.compile('{[A-Z]}')
-courseCatalog = open('SmithCatalogue2017-18.pdf',"rb")
-parser = PDFParser(courseCatalog)
+# sets up regex
+# resource https://docs.python.org/3/howto/regex.html
+courseFilter = re.compile( '[A-Z][A-Z][A-Z] [0-9][0-9][0-9]' )
+latinHonorsRegex = re.compile( '{[A-Z]}' )
+
+# opens course catalog pdf, sets up parser
+courseCatalog = open( 'SmithCatalogue2017-18.pdf', "rb" )
+parser = PDFParser( courseCatalog )
 pdfDoc = PDFDocument()
-parser.set_document(pdfDoc)
-pdfDoc.set_parser(parser)
-pdfDoc.initialize("")
+parser.set_document( pdfDoc )
+pdfDoc.set_parser( parser )
+pdfDoc.initialize( "" )
 manager = PDFResourceManager()
 params = LAParams()
-aggregate = PDFPageAggregator(manager, laparams=params)
-interpret = PDFPageInterpreter(manager,aggregate)
+aggregate = PDFPageAggregator( manager, laparams=params )
+interpret = PDFPageInterpreter( manager, aggregate )
 data = {}
 empty = {}
+
+# loops over all pages in pdf
 for page in pdfDoc.get_pages():
-    interpret.process_page(page)
+    interpret.process_page( page )
     pgLayout = aggregate.get_result()
+    
     for el in pgLayout:
         if isinstance(el,LTTextBoxHorizontal):
             txtToCheck = el.get_text()
             latinHonorsTxt = ""
             ltnHonorsExists = True
+            
+            # identifies and grabs the data we want
             if (courseFilter.match(txtToCheck[0:7])):
                 courseData = copy.copy(empty)
                 txtArray = txtToCheck.split("\n")
@@ -49,6 +57,8 @@ for page in pdfDoc.get_pages():
                 description = "\n".join(txtArray)
                 courseData["description"] = description
                 data[courseData["number"].replace(" ","")] = courseData
+                
+                # finds all latin honors, stops when there are none left
                 while (ltnHonorsExists):
                     ltnHnrs = latinHonorsRegex.search(description)
                     if (ltnHnrs==None):
@@ -57,7 +67,11 @@ for page in pdfDoc.get_pages():
                         latinHonorsTxt = latinHonorsTxt + ltnHnrs[0]
                         description = description.replace(ltnHnrs[0],"")
                 courseData["latin honors"] = latinHonorsTxt
+
+# closes file
 courseCatalog.close()
+
+# puts course data in json file
 jsonFile = open("courses.json","w")
 json.dump(data,jsonFile)
 jsonFile.close()
