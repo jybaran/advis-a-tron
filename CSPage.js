@@ -10,28 +10,28 @@ let div = document.createElement("div");
 // Once the majors have been successfully loaded and formatted as a JSON object
 // using response.json(), run the initialize() function
 fetch('courses.json').then(function(response){
-                           if(response.ok){
-                           response.json().then(function(json){
-                                                coursesJSON = json;
-                                                initialize();
-                                                });
+    if(response.ok){
+        response.json().then(function(json){
+            coursesJSON = json;
+            initialize();
+        });
 
-                           } else {
-                           console.log('Network request for courses.json failed with response ' + response.status + ': ' + response.statusText);
-                           }
-                           });
+    } else {
+        console.log('Network request for courses.json failed with response ' + response.status + ': ' + response.statusText);
+    }
+});
 
 fetch('majors.json').then(function(response){
-                          if(response.ok){
-                          response.json().then(function(json){
-                                               majors = json;
-                                               initialize();
-                                               });
+    if(response.ok){
+        response.json().then(function(json){
+            majors = json;
+            initialize();
+        });
 
-                          } else {
-                          console.log('Network request for majors.json failed with response ' + response.status + ': ' + response.statusText);
-                          }
-                          });
+    } else {
+        console.log('Network request for majors.json failed with response ' + response.status + ': ' + response.statusText);
+    }
+});
 
 
 
@@ -91,14 +91,13 @@ function initialize() {
           reqsDone[child.id] = courses[child.id];
         }
       }
-      return reqsDone;
     }
 
     //this function puts the dictionary of taken courses
     // into a more palatable format
-    function displayHelper(reqsDone) {
+    function displayHelper() {
       sumReqs = null;
-      for key in reqsDone {
+      for (key in reqsDone) {
         if (sumReqs == null) {
           sumReqs = reqsDone[key];
         } else {
@@ -143,14 +142,14 @@ function initialize() {
     }
     // this function checks to see which courses the user has taken and marks
     // their corresponding requirement 'slot' as satisfied
-    function processReqs(reqsDone, sumReqs) {
+    function processReqs(sumReqs) {
       preqs = true;
       filled = {};
-      while  preqs {
+      while (preqs) {
         minItem = findMin(sumReqs);
         minIndex = minItem[1];
         minItem = minItem[0];
-        for item in reqsDone {
+        for (item in reqsDone) {
           req = reqsDone[item];
           if (req[minIndex] != 0) {
             // if we're here, using current course to fill a req
@@ -178,7 +177,29 @@ function initialize() {
       // LEFT TO DO:
       // compare filled requirements to as of yet unsatisfied requirements
       // take unsatisfied reqs and display corresponding courses on page
-
+      // Call display helper to sum the binary indicators for requirements courses fill
+      reqsSum = displayHelper();
+      // Call process reqs to mark requirements filled based on courses taken
+      filledReqs = processReqs(reqsSum);
+      //Deal with everything that's not filled
+      filledKeys = filledReqs.keys();
+      unfilled = {};
+      reqDescription = majors["Computer Science"].reqDict;
+      for (let i=0;i<requirements.length;i++) {
+      	r = requirements[i];     //the requirement category
+      	if (!(filledKeys.includes(r))) {
+      		for (c in courses) {
+      			if (courses[c][i] == 1 && !reqsDone.keys().includes(c)) {
+      				if (reqDescription[r] in unfilled) {
+      					unfilled[reqDescription[r]].push(c);
+      				} else {
+      					unfilled[reqDescription[r]] = [c];
+      				}
+      			}
+      		}
+      	}
+      }
+      console.log(unfilled);
     }
     // this displays all information for a given course
     // USED FOR TESTING PURPOSES AND DEBUGGING
