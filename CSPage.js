@@ -134,7 +134,7 @@ function initialize() {
           min = array[i];
           index = i;
         } else {
-          if (array[i] < min && != 0) {
+          if (array[i] < min && array[i] != 0) {
             min = array[i];
             index = i;
           }
