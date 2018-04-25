@@ -122,6 +122,7 @@ function initialize() {
           }
         }
       }
+      console.log(max);
       return max;
     }
     // simple find-min-element-of-array function
@@ -129,11 +130,11 @@ function initialize() {
       min = null;
       index = null;
       for (let i = 0; i<array.length; i++) {
-        if (min == null) {
+        if (min == null && array[i] != 0) {
           min = array[i];
           index = i;
         } else {
-          if (array[i] < min) {
+          if (array[i] < min && != 0) {
             min = array[i];
             index = i;
           }
@@ -147,6 +148,7 @@ function initialize() {
       preqs = true;
       filled = {};
       while (preqs) {
+      	console.log(sumReqs);
         minItem = findMin(sumReqs);
         minIndex = minItem[1];
         minItem = minItem[0];
@@ -159,6 +161,8 @@ function initialize() {
               sumReqs[i] = sumReqs[i]-req[i];
             }
             sumReqs[minIndex] = 0;
+            console.log("Set 0?")
+            console.log(sumReqs)
             break;
           }
         }
