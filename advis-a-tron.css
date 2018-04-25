@@ -65,8 +65,8 @@ label {
 }
 
 /* Style the submit button */
-button {
-    padding-top: -10px;
+#Submit {
+    border-radius: 4px;
     background-color: #476699;
     border: none;
     color: #fff;
@@ -74,20 +74,61 @@ button {
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
-    padding: 8px 32px;
+    padding: 10px 32px;
+    width: 150px;
+    cursor: pointer; /* Different cursor for button */
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition-duration: 0.5s;
+    margin: 5px;
+}
+
+#Submit span {
+    display: inline-block;
+    position: relative;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition-duration: 0.5s;
+}
+
+#Submit span:after {
+    content: "⇨";
+	position: absolute;
+	opacity: 0;
+    top: -3px;
+	right: -20px;
+    -webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+	transition: 0.5s;
 }
 
 /* Submit button turns a different colour when hovered over*/
-button:hover {
-    background-color: #384f75;
-    color: white;
+
+#Submit:hover span {
+    padding-right: 25px;
+}
+
+#Submit:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 /* Visual effect for submit button when clicked */
-button:active {
+#Submit:active {
     background-color: #384f75;
-    padding: 10px 35px;
+    -webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+	transition: 0.5s;
 }
+
 
 tr {
     height: 500px;
