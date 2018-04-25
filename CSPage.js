@@ -83,7 +83,7 @@ function initialize() {
     // this function processes which courses have been selected by the user
     function checkBoxes(e) {
       e.preventDefault();
-      requirements = majors["Computer Science"].reqList;
+      requirements = majors["Computer Science"].reqlist;
       reqsDone = {};
       for (let i = 0; i<div.children.length;i+=2) {
         let child = div.children[i].children[0];
@@ -97,10 +97,12 @@ function initialize() {
     //this function puts the dictionary of taken courses
     // into a more palatable format
     function displayHelper() {
-      sumReqs = null;
+      sumReqs = [];
       for (key in reqsDone) {
-        if (sumReqs == null) {
-          sumReqs = reqsDone[key];
+        if (sumReqs.length==0) {
+          for (j=0;j<reqsDone[key].length;j++) {
+          	sumReqs.push(reqsDone[key][j]);
+          }
         } else {
           temp = reqsDone[key];
           for (let i = 0; i < sumReqs.length; i++) {
@@ -129,11 +131,11 @@ function initialize() {
       min = null;
       index = null;
       for (let i = 0; i<array.length; i++) {
-        if (min == null) {
+        if (min == null && array[i] != 0) {
           min = array[i];
           index = i;
         } else {
-          if (array[i] < min) {
+          if (array[i] < min && array[i] != 0) {
             min = array[i];
             index = i;
           }
@@ -183,14 +185,14 @@ function initialize() {
       // Call process reqs to mark requirements filled based on courses taken
       filledReqs = processReqs(reqsSum);
       //Deal with everything that's not filled
-      filledKeys = filledReqs.keys();
+      filledKeys = Object.keys(filledReqs);
       unfilled = {};
-      reqDescription = majors["Computer Science"].reqDict;
+      reqDescription = majors["Computer Science"].reqdict;
       for (let i=0;i<requirements.length;i++) {
       	r = requirements[i];     //the requirement category
       	if (!(filledKeys.includes(r))) {
       		for (c in courses) {
-      			if (courses[c][i] == 1 && !reqsDone.keys().includes(c)) {
+      			if (courses[c][i] == 1 && !Object.keys(reqsDone).includes(c)) {
       				if (reqDescription[r] in unfilled) {
       					unfilled[reqDescription[r]].push(c);
       				} else {
