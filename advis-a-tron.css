@@ -31,12 +31,13 @@ header {
 
 /* Header title font and color */
 h1 {
-    color: #373b82;
+    color: #fff;
     font-family: 'Overlock SC', cursive;
-	text-shadow: 4px 4px 0px #FFFFFF, 8px 8px 0px #1d1f44;
+	text-shadow: 4px 4px 0px #000, 8px 8px 0px #9fdff2;
 	font-size: 500%;
     z-index: 10;
     text-align: center;
+    padding-top: 90px;
 }
 
 h2 {
