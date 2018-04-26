@@ -10,7 +10,7 @@ fetch('majors.json').then(function(response){
                                                majors = json;
                                                initialize();
                                                });
-
+                          
                           } else {
                           console.log('Network request for houses.json failed with response ' + response.status + ': ' + response.statusText);
                           }
@@ -24,35 +24,33 @@ function initialize() {
     // Set both to equal an empty array, in time for searches to be run
     majorGroup = [];
     courseGroup = [];
-
+    
     // when the search button is clicked, invoke goTo() to load
     // the specific page for each major
     Submit.onclick = goTo;
-
+    
     function goTo() {
-      let goToTarget = document.querySelector('#major');
-      console.log(goToTarget.value);
-      if (goToTarget.value == "Computer Science") {
-        window.open("CSPage.html");
-      } else if (goToTarget.value == "Mathematics") {
-        window.open("MathPage.html");
-      } else if (goToTarget.value == "Mathematics Stats") {
-          window.open("MathStatsPage.html");
-      } else if (goToTarget.value == "Astronomy") {
-          window.open("AstroPage.html");
-      } else if (goToTarget.value == "Engineering BA") {
-          window.open("EngBAPage.html");
-      } else if (goToTarget.value == "Engineering BS") {
-          window.open("EngBSPage.html");
-      }
+        let goToTarget = document.querySelector('#major');
+        console.log(goToTarget.value);
+        if (goToTarget.value == "Computer Science") {
+            window.open("CSPage.html");
+        } else if (goToTarget.value == "Mathematics") {
+            window.open("MathPage.html");
+        } else if (goToTarget.value == "Mathematics Stats") {
+            window.open("MathStatsPage.html");
+        } else if (goToTarget.value == "Astronomy") {
+            window.open("AstroPage.html");
+        } else if (goToTarget.value == "Engineering BA") {
+            window.open("EngBAPage.html");
+        } else if (goToTarget.value == "Engineering BS") {
+            window.open("EngBSPage.html");
+        }
+        
+        
     }
-
-}
     // start the process of updating the display
-
-
-
-
+    
+    
     // Display a major inside the <main> element
     function showMajor(objectURL, house) {
         //console.log("got to showhouse");
