@@ -34,10 +34,17 @@ function initialize() {
       console.log(goToTarget.value);
       if (goToTarget.value == "Computer Science") {
         window.open("CSPage.html");
-      } else if (goToTarget.value == "Math") {
+      } else if (goToTarget.value == "Mathematics") {
         window.open("MathPage.html");
-      // only go to CS page for now
-      //window.open("CSpage.html");
+      } else if (goToTarget.value == "Mathematics Stats") {
+          window.open("MathStatsPage.html");
+      } else if (goToTarget.value == "Astronomy") {
+          window.open("AstroPage.html");
+      } else if (goToTarget.value == "Engineering BA") {
+          window.open("EngBAPage.html");
+      } else if (goToTarget.value == "Engineering BS") {
+          window.open("EngBSPage.html");
+      }
     }
 
 }
