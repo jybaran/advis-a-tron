@@ -187,3 +187,7 @@ tr {
     display: none;
     overflow: hidden;
 }
+
+.bottom-whitespace {
+    margin-bottom: 5cm;
+}
