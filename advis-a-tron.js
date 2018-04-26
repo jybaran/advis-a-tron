@@ -27,7 +27,7 @@ function initialize() {
 
     // when the search button is clicked, invoke goTo() to load
     // the specific page for each major
-    submitBtn.onclick = goTo;
+    Submit.onclick = goTo;
 
     function goTo() {
       let goToTarget = document.querySelector('#major');
