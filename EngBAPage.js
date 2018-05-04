@@ -185,8 +185,8 @@ function initialize() {
         while (main.firstChild) {
             main.removeChild(main.firstChild);
         }
-
-        // LEFT TO DO:
+        let headingTxt = document.getElementsByTagName("h2")[0];
+        headingTxt.textContent = "";
         // take unsatisfied reqs and display corresponding courses on page
         // Call display helper to sum the binary indicators for requirements courses fill
         reqsSum = displayHelper();
