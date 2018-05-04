@@ -210,6 +210,7 @@ function initialize() {
             for (let req of unfilled[key]) {
                 let b = document.createElement('Button');
                 b.setAttribute("class", "accordion");
+                b.setAttribute("type", "button");
                 b.value = req;
                 // creates an accordion for each course containing the course description
                 let pan = document.createElement('div');
@@ -232,10 +233,10 @@ function initialize() {
           acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
             let panel = this.nextElementSibling;
-            if (panel.styole.maxHeight) {
-              panel.style.maxHeight = null;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
             } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
+              panel.style.display = "block";
             }
           });
         }

@@ -157,6 +157,7 @@ tr {
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
+    position: relative;
     background-color: white;
     display: none;
     overflow: hidden;
