@@ -6,6 +6,7 @@ let requirements = null;
 let reqsDone = null;
 let div = document.createElement("div");
 let buttonDiv = document.createElement("buttonDiv");
+// accordion help: https://www.w3schools.com/howto/howto_js_accordion.asp
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
 // Once the majors have been successfully loaded and formatted as a JSON object
@@ -16,7 +17,7 @@ fetch('courses.json').then(function(response){
                                                 coursesJSON = json;
                                                 initialize();
                                                 });
-                           
+
                            } else {
                            console.log('Network request for courses.json failed with response ' + response.status + ': ' + response.statusText);
                            }
@@ -28,7 +29,7 @@ fetch('majors.json').then(function(response){
                                                majors = json;
                                                initialize();
                                                });
-                          
+
                           } else {
                           console.log('Network request for majors.json failed with response ' + response.status + ': ' + response.statusText);
                           }
@@ -50,14 +51,14 @@ function initialize() {
     // when the search button is clicked load specific page for each major
     showMajor();
     Submit.onclick = checkBoxes;
-    
+
     // Display a major inside the <main> element
     function showMajor() {
         // create <section>, <h2>, <p>, and <img> elements
         let section = document.createElement('section');
         let major = document.createElement('h2');
         let advisorsList = document.createElement('h3');
-        
+
         // setting up which major the user chose and initializing all the variables
         // to be used later (mostly for HTML purposes)
         major.textContent = "Department: Computer Science";
@@ -67,11 +68,11 @@ function initialize() {
             advisorsList.textContent = advisorsList.textContent.concat(advisor, ", ");
         }
         courses = majors["Computer Science"].courses;
-        
+
         section.appendChild(major);
         section.appendChild(advisorsList);
         main.appendChild(section);
-        
+
         div.innerHTML = "";
         for (let key in courses) {
             let c = document.createElement("Input");
@@ -94,7 +95,7 @@ function initialize() {
         }
         updateDisplay();
     }
-    
+
     //this function puts the dictionary of taken courses
     // into a more palatable format
     function displayHelper() {
@@ -172,13 +173,13 @@ function initialize() {
         }
         return filled;
     }
-    
+
     // this function displays all of the information in the HTML element of the page
     function updateDisplay() {
         while (main.firstChild) {
             main.removeChild(main.firstChild);
         }
-        
+
         // LEFT TO DO:
         // take unsatisfied reqs and display corresponding courses on page
         // Call display helper to sum the binary indicators for requirements courses fill
@@ -210,16 +211,39 @@ function initialize() {
                 let b = document.createElement('Button');
                 b.setAttribute("class", "accordion");
                 b.value = req;
+                // creates an accordion for each course containing the course description
+                let panel = document.createElement('div');
+                panel.setAttribute("class", "panel");
+                let p = document.createElement('p');
+                let courseDesc = courses[req].name;
+                let pContent = document.createTextNode(courseDesc);
+                // assembles the accordion elements together
+                p.appendChild(pContent);
+                panel.appendChild(p);
+
                 let t = document.createTextNode(req);
                 b.appendChild(t);
                 reqSection.append(b);
+                reqSection.append(panel);
             }
+        }
+        let acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i<acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            let pan = this.nextElementSibling;
+            if (pan.styole.maxHeight) {
+              pan.style.maxHeight = null;
+            } else {
+              pan.style.maxHeight = pan.scrollHeight + "px";
+            }
+          });
         }
         //reqSection.appendChild(buttonDiv);
         main.appendChild(reqSection);
-        console.log(unfilled);
+        //console.log(unfilled);
     }
-    
+
     // this displays all information for a given course
     // USED FOR TESTING PURPOSES AND DEBUGGING
     function showReq(major) {
@@ -229,21 +253,21 @@ function initialize() {
         let heading = document.createElement('h2');
         let subhead = document.createElement('h3');
         let desc = document.createElement('p');
-        
+
         // Give the <h2> textContent equal to the course "name" property
         heading.textContent = course.name;
-        
+
         // Give the <h3> textContent equal to the course "number" property
         subhead.textContent = course.number;
-        
+
         // Give the <p>s textContent equal to the course description
         desc.textContent = course.description;
-        
+
         // append the elements to the DOM as appropriate, to add the course to the UI
         main.appendChild(section);
         section.appendChild(heading);
         section.appendChild(subhead);
         section.appendChild(desc);
     }
-    
+
 }
