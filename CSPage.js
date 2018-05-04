@@ -134,11 +134,11 @@ function initialize() {
         min = null;
         index = null;
         for (let i = 0; i<array.length; i++) {
-            if (min == null && array[i] != 0) {
+            if (min == null && !(array[i] <= 0)) {
                 min = array[i];
                 index = i;
             } else {
-                if (array[i] < min && array[i] != 0) {
+                if (array[i] < min && !(array[i] <= 0)) {
                     min = array[i];
                     index = i;
                 }
@@ -152,12 +152,16 @@ function initialize() {
         preqs = true;
         filled = {};
         while (preqs) {
+          console.log(sumReqs);
+          //console.log('while');
             minItem = findMin(sumReqs);
             minIndex = minItem[1];
             minItem = minItem[0];
             for (item in reqsDone) {
                 req = reqsDone[item];
-                if (req[minIndex] != 0) {
+
+                if ((req[minIndex] != 0) && !(item in filled)) {
+                  console.log(item);
                     // if we're here, using current course to fill a req
                     filled[item] = requirements[minIndex];
                     for (let i = 0; i<sumReqs.length;i++) {
@@ -168,10 +172,11 @@ function initialize() {
                 }
             }
             max = findMax(sumReqs);
-            if (max == 0) {
+            if (max <= 0) {
                 preqs = false;
             }
         }
+
         return filled;
     }
 
@@ -188,12 +193,15 @@ function initialize() {
         // Call process reqs to mark requirements filled based on courses taken
         filledReqs = processReqs(reqsSum);
         //Deal with everything that's not filled
-        filledKeys = Object.keys(filledReqs);
+        filledValues = Object.values(filledReqs);
+        //console.log(filledKeys);
         unfilled = {};
         reqDescription = majors["Computer Science"].reqdict;
+        //console.log(requirements);
         for (let i=0;i<requirements.length;i++) {
             r = requirements[i];     //the requirement category
-            if (!(filledKeys.includes(r))) {
+            if (!(filledValues.includes(r))) {
+              console.log('if');
                 for (c in courses) {
                     if (courses[c][i] == 1 && !Object.keys(reqsDone).includes(c)) {
                         if (reqDescription[r] in unfilled) {
@@ -208,7 +216,17 @@ function initialize() {
         let reqSection = document.createElement('section');
         //buttonDiv.innerHTML = "";
         for (let key in unfilled) {
+          // outer accordion
+          let a = document.createElement('Button');
+          a.setAttribute("class", "Accordion");
+          a.setAttribute("type", "button");
+          a.value = key;
+          let panelDiv = document.createElement('div');
+          panelDiv.setAttribute("class", "panel");
+          let text = document.createTextNode(key);
+          a.appendChild(text);
             for (let req of unfilled[key]) {
+              // inner accordion
                 let b = document.createElement('Button');
                 b.setAttribute("class", "Accordion");
                 b.setAttribute("type", "button");
@@ -217,31 +235,40 @@ function initialize() {
                 let pan = document.createElement('div');
                 pan.setAttribute("class", "panel");
                 let p = document.createElement('p');
-                let courseDesc = courses[req].name;
-                let pContent = document.createTextNode(courseDesc);
-                // assembles the accordion elements together
-                p.appendChild(pContent);
-                pan.appendChild(p);
+              //  console.log(req);
+                //console.log(courseDesc);
+                try {
+                  let courseDesc = coursesJSON[req].name;
+                  let pContent = document.createTextNode(courseDesc);
+                  // assembles the accordion elements together
+                  p.appendChild(pContent);
+                  pan.appendChild(p);
+                  let t = document.createTextNode(req);
+                  b.appendChild(t);
+                  panelDiv.appendChild(b);
+                  panelDiv.appendChild(pan);
 
-                let t = document.createTextNode(req);
-                b.appendChild(t);
-                reqSection.appendChild(b);
-                reqSection.appendChild(pan);
+                } catch (TypeError) {
+                  console.error("Course not found in most recent catalogue");
+                }
             }
+            reqSection.appendChild(a);
+            reqSection.append(panelDiv);
         }
+
         main.appendChild(reqSection);
         let acc = document.getElementsByClassName("Accordion");
 
-        console.log(acc.length);
+        //console.log(acc.length);
         for (let i = 0; i<acc.length; i++) {
           acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
             let panel = this.nextElementSibling;
             if (panel.style.display === "block") {
-              console.log("if");
+              //console.log("if");
               panel.style.display = "none";
             } else {
-              console.log("else");
+              //console.log("else");
               panel.style.display = "block";
             }
           });
