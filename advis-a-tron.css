@@ -154,13 +154,28 @@ tr {
     background-color: #ccc;
 }
 
+.accordion:after {
+    content: '\002B';
+    color: #000;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
     position: relative;
     background-color: white;
+    max-height: 0;
+    /* hide and show elements in JS without deleting and recreating them */
     display: none;
     overflow: hidden;
+    transition: max-height 0.2s;
 }
 
 .bottom-whitespace {
