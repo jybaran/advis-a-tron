@@ -6,6 +6,7 @@ let requirements = null;
 let reqsDone = null;
 let div = document.createElement("div");
 let buttonDiv = document.createElement("buttonDiv");
+let main = document.querySelector("main");
 // accordion help: https://www.w3schools.com/howto/howto_js_accordion.asp
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
@@ -44,7 +45,7 @@ function initialize() {
     if (coursesJSON == null || majors == null) {
         return
     }
-    let main = document.querySelector('main');
+    //let main = document.querySelector('main');
     // grab the UI elements that we need to manipulate
     // Set requirements equal to an empty array
     majorReqs = [];
@@ -204,7 +205,7 @@ function initialize() {
                 }
             }
         }
-        let reqSection = document.createElement('reqSection');
+        let reqSection = document.createElement('section');
         //buttonDiv.innerHTML = "";
         for (let key in unfilled) {
             for (let req of unfilled[key]) {
@@ -224,21 +225,23 @@ function initialize() {
 
                 let t = document.createTextNode(req);
                 b.appendChild(t);
-                reqSection.append(b);
-                reqSection.append(pan);
+                reqSection.appendChild(b);
+                reqSection.appendChild(pan);
             }
         }
+        main.appendChild(reqSection);
         let acc = document.getElementsByClassName("Accordion");
 
         console.log(acc.length);
         for (let i = 0; i<acc.length; i++) {
-          console.log("hi");
           acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
             let panel = this.nextElementSibling;
             if (panel.style.display === "block") {
+              console.log("if");
               panel.style.display = "none";
             } else {
+              console.log("else");
               panel.style.display = "block";
             }
           });
