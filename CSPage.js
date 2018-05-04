@@ -152,7 +152,7 @@ function initialize() {
         preqs = true;
         filled = {};
         while (preqs) {
-          console.log(sumReqs);
+          //console.log(sumReqs);
           //console.log('while');
             minItem = findMin(sumReqs);
             minIndex = minItem[1];
@@ -161,7 +161,7 @@ function initialize() {
                 req = reqsDone[item];
 
                 if ((req[minIndex] != 0) && !(item in filled)) {
-                  console.log(item);
+                  //console.log(item);
                     // if we're here, using current course to fill a req
                     filled[item] = requirements[minIndex];
                     for (let i = 0; i<sumReqs.length;i++) {
@@ -201,7 +201,7 @@ function initialize() {
         for (let i=0;i<requirements.length;i++) {
             r = requirements[i];     //the requirement category
             if (!(filledValues.includes(r))) {
-              console.log('if');
+              //console.log('if');
                 for (c in courses) {
                     if (courses[c][i] == 1 && !Object.keys(reqsDone).includes(c)) {
                         if (reqDescription[r] in unfilled) {
@@ -214,6 +214,15 @@ function initialize() {
             }
         }
         let reqSection = document.createElement('section');
+        console.log(unfilled);
+        if (filledValues.length == requirements.length) {
+          console.log('if');
+          let congrats = "You've finished your major! Congratulations!"
+          let congratsText = document.createTextNode(congrats);
+          let conHeader = document.createElement('h1');
+          conHeader.appendChild(congratsText);
+          main.appendChild(conHeader);
+        } else {
         //buttonDiv.innerHTML = "";
         for (let key in unfilled) {
           // outer accordion
@@ -238,10 +247,16 @@ function initialize() {
               //  console.log(req);
                 //console.log(courseDesc);
                 try {
-                  let courseDesc = coursesJSON[req].name;
-                  let pContent = document.createTextNode(courseDesc);
+                  let courseName = coursesJSON[req].name;
+                  let courseDesc = coursesJSON[req].description;
+                  let pContent = document.createTextNode(courseName);
+                  let pDesc = document.createTextNode(courseDesc);
+                  let linebreak = document.createElement("br");
+
                   // assembles the accordion elements together
                   p.appendChild(pContent);
+                  p.appendChild(linebreak);
+                  p.appendChild(pDesc);
                   pan.appendChild(p);
                   let t = document.createTextNode(req);
                   b.appendChild(t);
@@ -275,6 +290,7 @@ function initialize() {
         }
         //reqSection.appendChild(buttonDiv);
         main.appendChild(reqSection);
+      }
         //console.log(unfilled);
     }
 
