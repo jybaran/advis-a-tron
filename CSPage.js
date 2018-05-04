@@ -212,30 +212,30 @@ function initialize() {
                 b.setAttribute("class", "accordion");
                 b.value = req;
                 // creates an accordion for each course containing the course description
-                let panel = document.createElement('div');
-                panel.setAttribute("class", "panel");
+                let pan = document.createElement('div');
+                pan.setAttribute("class", "panel");
                 let p = document.createElement('p');
                 let courseDesc = courses[req].name;
                 let pContent = document.createTextNode(courseDesc);
                 // assembles the accordion elements together
                 p.appendChild(pContent);
-                panel.appendChild(p);
+                pan.appendChild(p);
 
                 let t = document.createTextNode(req);
                 b.appendChild(t);
                 reqSection.append(b);
-                reqSection.append(panel);
+                reqSection.append(pan);
             }
         }
         let acc = document.getElementsByClassName("accordion");
         for (let i = 0; i<acc.length; i++) {
           acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
-            let pan = this.nextElementSibling;
-            if (pan.styole.maxHeight) {
-              pan.style.maxHeight = null;
+            let panel = this.nextElementSibling;
+            if (panel.styole.maxHeight) {
+              panel.style.maxHeight = null;
             } else {
-              pan.style.maxHeight = pan.scrollHeight + "px";
+              panel.style.maxHeight = panel.scrollHeight + "px";
             }
           });
         }
