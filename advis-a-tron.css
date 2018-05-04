@@ -171,11 +171,9 @@ tr {
     padding: 0 18px;
     position: relative;
     background-color: white;
-    max-height: 0;
     /* hide and show elements in JS without deleting and recreating them */
     display: none;
     overflow: hidden;
-    transition: max-height 0.2s;
 }
 
 .bottom-whitespace {
