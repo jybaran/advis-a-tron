@@ -83,7 +83,7 @@
             "bonus1" : "Additional 200/300 level AST course #1",
             "bonus2" : "Additional 200/300 level AST course #2",
             "bonus3" : "Additional 200/300 level AST course #3"
-            
+
         },
         "courses" : {
             "AST111" : [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
