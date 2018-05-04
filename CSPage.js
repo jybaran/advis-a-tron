@@ -5,6 +5,7 @@ let courses = null;
 let requirements = null;
 let reqsDone = null;
 let div = document.createElement("div");
+let buttonDiv = document.createElement("buttonDiv");
 
 // Use fetch to retrieve database. Report any errors that occur in the fetch operation
 // Once the majors have been successfully loaded and formatted as a JSON object
@@ -177,8 +178,8 @@ function initialize() {
       while (main.firstChild) {
           main.removeChild(main.firstChild);
       }
+
       // LEFT TO DO:
-      // compare filled requirements to as of yet unsatisfied requirements
       // take unsatisfied reqs and display corresponding courses on page
       // Call display helper to sum the binary indicators for requirements courses fill
       reqsSum = displayHelper();
@@ -202,6 +203,18 @@ function initialize() {
       		}
       	}
       }
+      let reqSection = document.createElement('reqSection');
+      //buttonDiv.innerHTML = "";
+      for (let key in unfilled) {
+        for (let req of unfilled[key]) {
+          let b = document.createElement('Button');
+          b.setAttribute("class", "accordion");
+          b.value = req;
+          reqSection.append(b);
+        }
+      }
+      //reqSection.appendChild(buttonDiv);
+      main.appendChild(reqSection);
       console.log(unfilled);
     }
 
