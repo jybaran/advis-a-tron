@@ -137,7 +137,7 @@ tr {
 }
 
 /* Style the buttons that are used to open and close the accordion panel containing courses filling a requirement */
-.accordion {
+.Accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -150,11 +150,11 @@ tr {
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
+.active, .Accordion:hover {
     background-color: #ccc;
 }
 
-.accordion:after {
+.Accordion:after {
     content: '\002B';
     color: #000;
     font-weight: bold;
