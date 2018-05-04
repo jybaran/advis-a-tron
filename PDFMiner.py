@@ -39,25 +39,27 @@ empty = {}
 for page in pdfDoc.get_pages():
     interpret.process_page( page )
     pgLayout = aggregate.get_result()
-    
+    # loops over elements identified in page
     for el in pgLayout:
+        #if the element is a horizontal box of text process as a course description
         if isinstance(el,LTTextBoxHorizontal):
             txtToCheck = el.get_text()
             latinHonorsTxt = ""
             ltnHonorsExists = True
-            
-            # identifies and grabs the data we want
+            # checks that the block begins with a course identifier
             if (courseFilter.match(txtToCheck[0:7])):
-                courseData = copy.copy(empty)
-                txtArray = txtToCheck.split("\n")
-                courseData["number"] = txtArray[0][0:7]
-                courseData["name"] = txtArray[0][7:]
-                courseData["offered"] = txtArray[len(txtArray)-2]
-                txtArray.pop(0)
-                description = "\n".join(txtArray)
-                courseData["description"] = description
-                data[courseData["number"].replace(" ","")] = courseData
-                
+                courseData = copy.copy(empty)   #creates a copy of the empty dictionary to avoid pointer conflicts
+                txtArray = txtToCheck.split("\n")  #splits text on line breaks
+                courseData["number"] = txtArray[0][0:7]  #stores course number
+                courseData["name"] = txtArray[0][7:]  #stores full course name
+                txtArray.pop(0) #removes course number and name so it isn't duplicated in description
+                description = "\n".join(txtArray)  #joins lines remaining to form description
+                courseData["description"] = description    #stores course description
+                courseData["offered"] = {"Fall":False,"Spring":False}
+                if not (description.find("spring")==-1) or not (description.find("Spring")==-1):
+                    courseData["offered"]["Spring"] = True
+                if not (description.find("fall")==-1) or not (description.find("Fall")==-1):
+                    courseData["offered"]["Fall"] = True
                 # finds all latin honors, stops when there are none left
                 while (ltnHonorsExists):
                     ltnHnrs = latinHonorsRegex.search(description)
@@ -67,7 +69,7 @@ for page in pdfDoc.get_pages():
                         latinHonorsTxt = latinHonorsTxt + ltnHnrs[0]
                         description = description.replace(ltnHnrs[0],"")
                 courseData["latin honors"] = latinHonorsTxt
-
+                data[courseData["number"].replace(" ","")] = courseData  #stores dictionary with course number as key
 # closes file
 courseCatalog.close()
 
