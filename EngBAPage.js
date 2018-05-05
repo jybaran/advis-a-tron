@@ -1,3 +1,4 @@
+// CS 220 Final Project --> Zoe Riell, Lauren Olson, Jenny Baran, & Cathy Lee
 // global variables
 let coursesJSON = null;
 let majors = null;

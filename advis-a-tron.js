@@ -1,3 +1,4 @@
+// CS 220 Final Project --> Zoe Riell, Lauren Olson, Jenny Baran, & Cathy Lee
 // Create variable to store majors database in
 let majors;
 
