@@ -152,8 +152,6 @@ function initialize() {
         preqs = true;
         filled = {};
         while (preqs) {
-          //console.log(sumReqs);
-          //console.log('while');
             minItem = findMin(sumReqs);
             minIndex = minItem[1];
             minItem = minItem[0];
@@ -161,7 +159,6 @@ function initialize() {
                 req = reqsDone[item];
 
                 if ((req[minIndex] != 0) && !(item in filled)) {
-                  //console.log(item);
                     // if we're here, using current course to fill a req
                     filled[item] = requirements[minIndex];
                     for (let i = 0; i<sumReqs.length;i++) {
@@ -194,14 +191,11 @@ function initialize() {
         filledReqs = processReqs(reqsSum);
         //Deal with everything that's not filled
         filledValues = Object.values(filledReqs);
-        //console.log(filledKeys);
         unfilled = {};
         reqDescription = majors["Engineering BS"].reqdict;
-        //console.log(requirements);
         for (let i=0;i<requirements.length;i++) {
             r = requirements[i];     //the requirement category
             if (!(filledValues.includes(r))) {
-              //console.log('if');
                 for (c in courses) {
                     if (courses[c][i] == 1 && !Object.keys(reqsDone).includes(c)) {
                         if (reqDescription[r] in unfilled) {
@@ -223,7 +217,6 @@ function initialize() {
           conHeader.appendChild(congratsText);
           main.appendChild(conHeader);
         } else {
-        //buttonDiv.innerHTML = "";
         for (let key in unfilled) {
           // outer accordion
           let a = document.createElement('Button');
@@ -244,8 +237,6 @@ function initialize() {
                 let pan = document.createElement('div');
                 pan.setAttribute("class", "panel");
                 let p = document.createElement('p');
-              //  console.log(req);
-                //console.log(courseDesc);
                 try {
                   let courseName = coursesJSON[req].name;
                   let courseDesc = coursesJSON[req].description;
@@ -273,51 +264,18 @@ function initialize() {
 
         main.appendChild(reqSection);
         let acc = document.getElementsByClassName("Accordion");
-
-        //console.log(acc.length);
         for (let i = 0; i<acc.length; i++) {
           acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
             let panel = this.nextElementSibling;
             if (panel.style.display === "block") {
-              //console.log("if");
               panel.style.display = "none";
             } else {
-              //console.log("else");
               panel.style.display = "block";
             }
           });
         }
-        //reqSection.appendChild(buttonDiv);
         main.appendChild(reqSection);
       }
-        //console.log(unfilled);
     }
-
-    // this displays all information for a given course
-    // USED FOR TESTING PURPOSES AND DEBUGGING
-    function showReq(major) {
-        //console.log("got to showreq");
-        // create <section>, <h2>, <p>, and <img> elements
-        let section = document.createElement('section');
-        let heading = document.createElement('h2');
-        let subhead = document.createElement('h3');
-        let desc = document.createElement('p');
-
-        // Give the <h2> textContent equal to the course "name" property
-        heading.textContent = course.name;
-
-        // Give the <h3> textContent equal to the course "number" property
-        subhead.textContent = course.number;
-
-        // Give the <p>s textContent equal to the course description
-        desc.textContent = course.description;
-
-        // append the elements to the DOM as appropriate, to add the course to the UI
-        main.appendChild(section);
-        section.appendChild(heading);
-        section.appendChild(subhead);
-        section.appendChild(desc);
-    }
-
 }
